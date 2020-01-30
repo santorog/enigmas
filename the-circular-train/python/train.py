@@ -12,15 +12,12 @@ class wagon:
 class train:
 
     def __init__(self, size):
-
         first = wagon()
         last = first 
-
         for i in range(size-1):
             new_w = wagon(last, first) 
             last.next_w = new_w
             last = new_w
-            
         first.prev_w=last
         self.current_wagon=first
 
@@ -36,3 +33,34 @@ class train:
     def switch_wagon(self):
         self.current_wagon.on = not self.current_wagon.on
 
+# Now a the problem
+
+size = rd.randint(1,10000)
+train = train(size)
+
+def dummy_size(train):
+    i=1
+    start = train.current_wagon
+    while start != train.current_wagon.next_w:
+        train.move_next() 
+        i+=1
+    return i
+
+def solve_problem(train):
+   if not train.is_wagon_on() :
+       train.switch_wagon()
+   i=1
+   while True:
+      for j in range(i):
+          train.move_prev()
+      train.switch_wagon()
+      for j in range(i):
+          train.move_next()
+      if train.is_wagon_on():
+          i+=1
+      else:
+          return i
+
+success = solve_problem(train) == size 
+print("Success, you are free! " if success else "Dead bruh!")
+        
