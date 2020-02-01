@@ -20,7 +20,9 @@ All puzzles statements and difficulty.
 
 *Not available yet*
 
-    A more general approach of the above puzzle : How to get a random number between 1 and N, when you can only roll a 6-sided die.
+    A more general approach of the above puzzle. 
+    
+    How to get a random number between 1 and N, when you can only roll a 6-sided die.
 
     Level : 3 / 5
 
